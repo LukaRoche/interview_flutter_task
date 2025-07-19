@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:interview_flutter_task/constants.dart';
+import 'package:interview_flutter_task/state/app_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../api/swapi_service.dart';
 import '../models/person.dart';
-
-enum AppState { initial, loading, loaded, error }
 
 class CharacterProvider extends ChangeNotifier {
   final SwapiService _swapiService = SwapiService();
@@ -37,20 +37,22 @@ class CharacterProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> _saveFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    // we parse list of ints to list of strings, so we can save it
+    List<String> favoritesList = _favoriteIds.map((number) => number.toString()).toList();
+    await prefs.setStringList(Constants.keyFavoriteIds,favoritesList);
+  }
+
   Future<void> _loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> favoritesList = prefs.getStringList('favoriteIds') ?? [];
+    // we parse back list of strings to list of ints
+    List<String> favoritesList = prefs.getStringList(Constants.keyFavoriteIds) ?? [];
     _favoriteIds = favoritesList
         .map((str) => int.tryParse(str))
         .whereType<int>()
         .toList();
     notifyListeners();
-  }
-
-  Future<void> _saveFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
-    List<String> favoritesList = _favoriteIds.map((number) => number.toString()).toList();
-    await prefs.setStringList('favoriteIds',favoritesList);
   }
 
   Future<void> fetchPeople() async {

@@ -17,7 +17,7 @@ class SwapiService {
 
       final List<Person> people = results.map((personData) {
         // We get id from url parameter
-        final String url = personData['url'];
+        final String url = personData[Person.keyUrl];
         final int id = int.parse(url.split('/')[5]);
         return Person.fromJson(personData as Map<String, dynamic>, id);
       }).toList();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/character_provider.dart';
+import 'package:interview_flutter_task/state/app_state.dart';
+import '../state/character_provider.dart';
 import '../widgets/character_tile.dart';
 
 class CharacterListScreen extends StatefulWidget {

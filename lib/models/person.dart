@@ -1,9 +1,16 @@
+
 class Person {
   final int id;
   final String name;
   final String? birthYear;
   final String? hairColor;
   final String? gender;
+
+  static const String keyName = 'name';
+  static const String keyBirthday = 'birth_year';
+  static const String keyGender = 'gender';
+  static const String keyHairColor = 'hair_color';
+  static const String keyUrl= 'url';
 
   Person({
     required this.id,
@@ -16,10 +23,10 @@ class Person {
   factory Person.fromJson(Map<String, dynamic> json, int id) {
     return Person(
       id: id,
-      name: json['name'],
-      birthYear: json['birth_year'],
-      hairColor: json['hair_color'],
-      gender: json['gender'],
+      name: json[Person.keyName],
+      birthYear: json[Person.keyBirthday],
+      hairColor: json[Person.keyHairColor],
+      gender: json[Person.keyGender],
     );
   }
 }

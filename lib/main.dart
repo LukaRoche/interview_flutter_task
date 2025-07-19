@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/character_list_screen.dart';
-import 'providers/character_provider.dart';
+import 'state/character_provider.dart';
 
 void main() {
   runApp(const MyApp());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/person.dart';
 import '../screens/character_details_screen.dart';
 import 'package:provider/provider.dart';
-import '../providers/character_provider.dart';
+import '../state/character_provider.dart';
 
 class CharacterTile extends StatelessWidget {
   final Person person;
