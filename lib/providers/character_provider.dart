@@ -39,7 +39,6 @@ class CharacterProvider extends ChangeNotifier {
 
   Future<void> _loadFavorites() async {
     final prefs = await SharedPreferences.getInstance();
-
     List<String> favoritesList = prefs.getStringList('favoriteIds') ?? [];
     _favoriteIds = favoritesList
         .map((str) => int.tryParse(str))
