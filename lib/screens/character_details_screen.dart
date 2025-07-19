@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../api/swapi_service.dart';
 import '../models/person.dart';
-import '../providers/character_provider.dart'; // Import providera
+import '../providers/character_provider.dart';
 
 class CharacterDetailsScreen extends StatefulWidget {
   final int personId;

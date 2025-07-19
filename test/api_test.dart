@@ -23,7 +23,7 @@ void main() {
       // Mock the successful response
       when(mockClient.get(Uri.parse('https://swapi.info/api/people/')))
           .thenAnswer((_) async => http.Response(
-        '[{"name": "Luke Skywalker", "url": "https://swapi.dev/api/people/1/"}]',
+        '[{"name": "Luke Skywalker", "url": "https://swapi.info/api/people/1/"}]',
         200,
       ));
 
@@ -47,7 +47,7 @@ void main() {
     test('getPersonDetails returns a Person on success', () async {
       when(mockClient.get(Uri.parse('https://swapi.info/api/people/1/')))
           .thenAnswer((_) async => http.Response(
-        '{"name": "Luke Skywalker", "birth_year": "19BBY", "url": "https://swapi.dev/api/people/1/"}',
+        '{"name": "Luke Skywalker", "birth_year": "19BBY", "url": "https://swapi.info/api/people/1/"}',
         200,
       ));
 
